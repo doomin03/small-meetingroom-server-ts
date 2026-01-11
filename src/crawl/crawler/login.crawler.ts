@@ -1,7 +1,7 @@
-import { cralwer, Step } from "../base/crawler.base";
+import { Crawler, Step } from "../base/crawler.base";
 import { Page } from "playwright";
 
-export class LoginCralwer extends cralwer {
+export class LoginCralwer extends Crawler {
     constructor(page: Page) {
         super(page)
     }

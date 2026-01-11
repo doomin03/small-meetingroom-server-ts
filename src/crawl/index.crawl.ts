@@ -1,7 +1,7 @@
 // crawler.controller.ts
-import { BrowserContext, chromium, Page, Cookie } from 'playwright';
-import { Job } from '../type/index.type';
-import { Queue } from '../type/queue';
+import { BrowserContext, chromium, Page } from 'playwright';
+import { LoginCralwer } from "../crawl/crawler/login.crawler";
+
 
 export class CrawlerController {
 
@@ -13,7 +13,6 @@ export class CrawlerController {
         return this._instance;
     }
 
-    queue: Queue<Job> = new Queue<Job>();
 
     context!: BrowserContext;
     page!: Page;
@@ -23,7 +22,7 @@ export class CrawlerController {
         token?: string;
     };
 
-    private constructor() { }
+    private constructor() {  }
 
     async build() {
         const browser = await chromium.launch({ headless: false, slowMo: 80 });
@@ -45,4 +44,13 @@ export class CrawlerController {
         };
     }
 
+
+}
+
+
+
+export class controllerScheduler {
+    constructor(){
+        
+    }
 }

@@ -4,8 +4,7 @@ enum CralwerType {
     UPDATE = 3,
 }
 
-export interface Job<T = any> {
+export interface Job {
     tpye: CralwerType;
-    payload: T;
-    createdAt: number;
+    // createdAt: number;
 }
