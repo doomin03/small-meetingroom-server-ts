@@ -1,5 +1,11 @@
 import { chromium, Page } from "playwright";
+import { Worker as base } from "../../scheduler/controller.scheduler";
 
+
+/**
+ * 각기 다른 역할을 하는 크롤링 함수를  개별적으로 구분하고 크롤링함수 리스트에 적재를 한다
+ * 
+ */
 export function Step(): MethodDecorator {
     return (target, propertyKey, descriptor) => {
         const ctor = target.constructor as any;
@@ -12,8 +18,11 @@ export function Step(): MethodDecorator {
     };
 }
 
+/**
+ * 크롤러를 정의하는 함수로 Step이 있는 함수를 저장하여 RUN을 통해 실행한다
+ */
 
-export  class Crawler {
+export abstract class Crawler implements base {
     page: Page;
     funcs: Array<() => Promise<[boolean, string]>> = [];
     protected ignoreMethods: string[] = ['constructor', 'run', 'getSteps'];
